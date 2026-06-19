@@ -1,0 +1,11 @@
+<body>
+    <h2> Conditional (if) </h2>
+
+    <p th:if="${number1 > number2}">
+        <span th:text="${number1} + ' is greater than ' + ${number2}"></span>
+    </p>
+
+    <p th:if="${number2 > number1}">
+        <span th:text="${number2} + ' is greater than ' + ${number1}"></span>
+    </p>
+</body>

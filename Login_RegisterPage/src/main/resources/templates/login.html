@@ -1,0 +1,30 @@
+<!Doctype html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+</head>
+	<body>
+		<h1>Welcome to My Login page..</h1>
+		
+		 
+		
+		<div th:if="${errormsg}">
+					<h3 style="color:red;" th:text="${errormsg}"></h3>
+				</div>
+				
+		<form  th:action="@{/loginPage}"  th:object="${user}" method="post">
+ 			Email : <input type="text" th:field="*{email}" > <br><br>
+			Password : <input type="text" th:field="*{password}" > <br><br>
+ 			 <input type="submit" value="Login"> <br><br>
+
+		</form>
+		<br><br>
+		<a th:href="@{/}">Home</a>
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<a th:href="@{/regPage}">Register</a>
+		
+	</body>
+	</html>
+	

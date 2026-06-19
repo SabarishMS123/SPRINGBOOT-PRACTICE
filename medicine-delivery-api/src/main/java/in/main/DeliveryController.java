@@ -1,0 +1,71 @@
+package in.main;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.*;
+@RestController
+@RequestMapping("/delivery")
+public class DeliveryController {
+
+    
+    @Autowired
+    private DeliveryService deliveryService;
+
+    
+    @GetMapping("/status")
+    public String checkStatus() {
+        return deliveryService.getStatus();
+    }
+    @GetMapping("/medicines")
+    public List<String> getAllMedicines() {
+        return Arrays.asList("Paracetamol", "Dolo 650", "Vitamin C", "Aspirin");
+    }
+
+    
+    @GetMapping("/medicine/{id}")
+    public String getMedicineById(@PathVariable int id) {
+        return "Medicine details for id : " + id;
+    }
+    
+    @PutMapping("/medicine/update")
+    public Medicine updateMedicinePrice(@RequestBody Medicine medicine) {
+        
+        double currentPrice = medicine.getPrice();
+        
+        
+        medicine.setPrice(currentPrice + 20);
+        
+        
+        return medicine;
+}
+    @GetMapping("/test-external-api")
+    public String callExternalApi() {
+        return deliveryService.getExternalPost();
+    }
+    
+    @PostMapping("/medicine/add")
+    public ResponseEntity<Medicine> addMedicine(@RequestBody Medicine medicine) {
+        
+        
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(medicine);
+    }
+    
+    @DeleteMapping("/medicine/delete/{id}")
+    public ResponseEntity<String> deleteMedicine(@PathVariable int id) {
+        
+              return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("Medicine with ID " + id + " deleted successfully.");
+    }
+}

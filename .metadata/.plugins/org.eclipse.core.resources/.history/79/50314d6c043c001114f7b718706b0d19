@@ -1,0 +1,26 @@
+<h1 class="mb-4"><i class="fas fa-comment-dots"></i> Feedback Collection System</h1>
+<form th:action="@{/feedback/submit}" method="post" th:object="${feedback}" class="row g-3 mb-5 card p-4">
+    <div class="col-md-4"><input type="text" class="form-control" placeholder="Your Name" th:field="*{name}" required></div>
+    <div class="col-md-4"><textarea class="form-control" placeholder="Message" th:field="*{message}" required></textarea></div>
+    <div class="col-md-2">
+        <select class="form-select" th:field="*{rating}">
+            <option value="1">1 ⭐</option><option value="2">2 ⭐⭐</option>
+            <option value="3">3 ⭐⭐⭐</option><option value="4">4 ⭐⭐⭐⭐</option>
+            <option value="5">5 ⭐⭐⭐⭐⭐</option>
+        </select>
+    </div>
+    <div class="col-md-2"><button type="submit" class="btn btn-primary w-100">Submit Feedback</button></div>
+</form>
+
+<h3>All Feedback</h3>
+<table class="table table-hover">
+    <thead><tr><th>Name</th><th>Message</th><th>Rating</th><th>Date</th></tr></thead>
+    <tbody>
+        <tr th:each="fb : ${feedbackList}">
+            <td th:text="${fb.name}"></td>
+            <td th:text="${fb.message}"></td>
+            <td><span th:each="i : ${#numbers.sequence(1, fb.rating)}" class="star">★</span></td>
+            <td th:text="${#dates.format(fb.submittedAt, 'dd MMM yyyy HH:mm')}"></td>
+        </tr>
+    </tbody>
+</table>

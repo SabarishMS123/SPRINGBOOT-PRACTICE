@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;in.main.controller.SimpleController.java&apos; to &apos;MyController.java&apos;&#x0D;&#x0A;- Original project: &apos;Thymleaf&apos;&#x0D;&#x0A;- Original element: &apos;in.main.controller.SimpleController.java&apos;&#x0D;&#x0A;- Renamed element: &apos;in.main.controller.MyController.java&apos;" description="Rename compilation unit &apos;SimpleController.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;in.main.controller{SimpleController.java" name="MyController.java" references="false" stamp="1775278379932" version="1.0"/>
+</session>

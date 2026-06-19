@@ -1,0 +1,56 @@
+package com.demo.main;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.demo.main.dao.UserDao;
+import com.demo.main.entity.User;
+
+@SpringBootApplication
+public class JdbcprojectApplication implements CommandLineRunner
+{
+	@Autowired
+	private UserDao userDao;
+
+	public static void main(String[] args) {
+		SpringApplication.run(JdbcprojectApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
+		User user1=new User("ram","salem","ram@gmail.com",1);
+//		user1.setId(1);
+//		user1.setName("ram");
+//		user1.setEmail("ram@gmail.com");
+//		user1.setAddress("salem");
+//		
+		boolean status=userDao.insertUser(user1);
+		if(status) {
+			System.out.println("value inserted successfully");
+		}
+		else {
+			System.out.println("user not inserted due to some error");
+		}
+		User userToUpdate = new User("ramesh", "bangalore", "ramesh_updated@gmail.com", 1); // Assuming user with ID 1 exists
+		boolean updateStatus = userDao.updateUser(userToUpdate);
+		if(updateStatus) {
+			System.out.println("User updated successfully: " + userToUpdate.getName() + " (ID: " + userToUpdate.getId() + ")");
+		} else {
+			System.out.println("User not updated. Check if user with ID " + userToUpdate.getId() + " exists or for other errors.");
+		}
+
+		System.out.println("\n------------------------------------\n");
+		int userIdToDelete = 1; 
+		boolean deleteStatus = userDao.deleteUser(userIdToDelete);
+		if(deleteStatus) {
+			System.out.println("User deleted successfully: ID " + userIdToDelete);
+		} else {
+			System.out.println("User not deleted. Check if user with ID " + userIdToDelete + " exists or for other errors.");
+		}
+		
+	}
+
+}

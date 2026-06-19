@@ -1,0 +1,26 @@
+package in.main;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+public class DeliveryService {
+	 @Autowired
+	  private RestTemplate restTemplate;
+
+    public void display() {
+      
+        System.out.println("Medicine delivery bean has been initialized");
+    }
+    
+    public String getStatus() {
+    	return "Medicine delivery bean has been initialized and is active!";
+    }
+   
+    public String getExternalPost() {
+        String url = "https://jsonplaceholder.typicode.com/posts/1";
+        
+        
+        return restTemplate.getForObject(url, String.class);
+    }
+}

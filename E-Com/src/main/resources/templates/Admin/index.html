@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index Page</title>
+	<link rel="stylesheet" href="./Style.css">
+</head>
+
+<body th:replace="~{Base :: layout(~{::section})}">
+	
+	<!-- templates/Base.html -->
+	 
+	    <div th:fragment="layout(content)">
+	        <div th:replace="${content}"></div>
+	    </div>
+ 
+	
+	<!-- change-->
+	<section>
+		<div class="container p-5 ">
+			<p class="text-center fs-5 mt-4">Admin DashBoard</p>
+
+			<div class="row text-center">
+	<!--  Start Here Backend Done -->
+				<div class="col-md-4 mb-4">
+					<a th:href="@{/Admin/Add_products}" class="text-decoration-none">
+						<div class="card card-sh">
+							<div class="card-body">
+								<i class="fa-solid fa-bag-shopping fa-2x text-primary fs-2"></i>
+								<h4 class="fs-5 text-primary">Add Product</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+		<!-- ENd Here -->
+				<div class="col-md-4 mb-4">
+					<a th:href="@{/Admin/Add_Category}" class="text-decoration-none">
+						<div class="card card-sh">
+							<div class="card-body">
+								<i class="fa-solid fa-file-circle-plus text-primary fs-2"></i>
+								<h4 class="fs-5 text-primary">Add Category</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mb-4">
+					<a th:href="@{/Admin/products}" class="text-decoration-none">
+						<div class="card card-sh">
+							<div class="card-body">
+								<i class="fa-solid fa-arrows-to-eye text-primary fs-2"></i>
+								<h4 class="fs-5 text-primary">View Product</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mb-4">
+					<a th:href="@{/Admin/users}" class="text-decoration-none">
+						<div class="card card-sh">
+							<div class="card-body">
+								<i class="fa-solid fa-people-roof text-primary fs-2"></i>
+								<h4 class="fs-5 text-primary">Users</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mb-4">
+					<a th:href="@{/Admin/orders}" class="text-decoration-none">
+						<div class="card card-sh">
+							<div class="card-body">
+								<i class="fa-solid fa-cart-arrow-down text-primary fs-2"></i>
+								<h4 class="fs-5 text-primary">Orders </h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mb-4">
+					<a th:href="@{/Admin/add_admin}" class="text-decoration-none">
+						<div class="card card-sh">
+							<div class="card-body">
+								<i class="fa-brands fa-audible text-primary fs-2"></i>
+								<h4 class="fs-5 text-primary">Add Admin's</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- Here you want to add new just add create a div element and 
+		give some inline properties like Example : p-3 (padding 3px all the sides)
+		-->
+		
+	</section>
+</body>
+</html>

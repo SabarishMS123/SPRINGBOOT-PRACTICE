@@ -1,0 +1,134 @@
+package in.main.controller;
+
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import in.main.entity.Attendance;
+import in.main.entity.Feedback;
+import in.main.repository.*;
+
+
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Controller
+@RequiredArgsConstructor
+public class MainController {
+
+    private  MainService mainService;
+
+    @GetMapping("/")
+    public String dashboard() {
+        return "index";
+    }
+
+    // ====================== FEEDBACK ======================
+    @GetMapping("/feedback")
+    public String showFeedback(Model model) {
+        model.addAttribute("feedback", new Feedback());
+        model.addAttribute("feedbackList", mainService.getAllFeedback());
+        return "feedback";
+    }
+
+    @PostMapping("/feedback/submit")
+    public String submitFeedback(@ModelAttribute Feedback feedback) {
+        mainService.saveFeedback(feedback);
+        return "redirect:/feedback";
+    }
+
+    // ====================== ATTENDANCE ======================
+    @GetMapping("/attendance")
+    public String showAttendance(@RequestParam(required = false) LocalDate filterDate, Model model) {
+        model.addAttribute("attendance", new Attendance());
+        List<Attendance> list = (filterDate != null) 
+                ? mainService.getAttendanceByDate(filterDate) 
+                : mainService.getAllAttendance();
+        
+        model.addAttribute("attendanceList", list);
+        model.addAttribute("filterDate", filterDate);
+        return "attendance";
+    }
+
+    @PostMapping("/attendance/submit")
+    public String submitAttendance(@ModelAttribute Attendance attendance) {
+        mainService.saveAttendance(attendance);
+        return "redirect:/attendance";
+    }
+
+    // ====================== TO-DO ======================
+    @GetMapping("/todo")
+    public String showTodo(Model model) {
+        List<TodoTask> all = mainService.getAllTodoTasks();
+        model.addAttribute("todoTask", new TodoTask());
+        model.addAttribute("pending", all.stream().filter(t -> !t.isCompleted()).toList());
+        model.addAttribute("completed", all.stream().filter(TodoTask::isCompleted).toList());
+        return "todo";
+    }
+
+    @PostMapping("/todo/add")
+    public String addTodo(@ModelAttribute TodoTask task) {
+        mainService.saveTodoTask(task);
+        return "redirect:/todo";
+    }
+
+    @PostMapping("/todo/complete/{id}")
+    public String completeTodo(@PathVariable Long id) {
+        mainService.markTodoAsCompleted(id);
+        return "redirect:/todo";
+    }
+
+    // ====================== ORDERS ======================
+    @GetMapping("/orders")
+    public String showOrders(Model model) {
+        List<RestaurantOrder> orders = mainService.getAllOrders();
+        model.addAttribute("order", new RestaurantOrder());
+        model.addAttribute("orderList", orders);
+        model.addAttribute("totalItems", mainService.getTotalItemsOrdered());
+        return "orders";
+    }
+
+    @PostMapping("/orders/add")
+    public String addOrder(@ModelAttribute RestaurantOrder order) {
+        mainService.saveOrder(order);
+        return "redirect:/orders";
+    }
+
+    // ====================== CONTACTS ======================
+    @GetMapping("/contacts")
+    public String showContacts(@RequestParam(required = false) String search, Model model) {
+        List<Contact> contacts = mainService.searchContactsByName(search);
+        model.addAttribute("contact", new Contact());
+        model.addAttribute("contactList", contacts);
+        model.addAttribute("search", search);
+        return "contact";
+    }
+
+    @PostMapping("/contacts/add")
+    public String addContact(@ModelAttribute Contact contact) {
+        mainService.saveContact(contact);
+        return "redirect:/contacts";
+    }
+
+    // ====================== LEAVES ======================
+    @GetMapping("/leaves")
+    public String showLeaves(Model model) {
+        model.addAttribute("leaveRequest", new LeaveRequest());
+        model.addAttribute("leaveList", mainService.getAllLeaveRequests());
+        return "leave";
+    }
+
+    @PostMapping("/leaves/submit")
+    public String submitLeave(@ModelAttribute LeaveRequest leaveRequest) {
+        mainService.saveLeaveRequest(leaveRequest);
+        return "redirect:/leaves";
+    }
+}

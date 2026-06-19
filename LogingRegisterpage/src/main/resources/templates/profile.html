@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+    <h2>Your Profile Details</h2>
+    <hr>
+
+    <div th:if="${user != null}">
+        <table border="1">
+            <tr>
+                <th>Username</th>
+                <td th:text="${user.username}">N/A</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td th:text="${user.email}">N/A</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td th:text="${user.phone}">N/A</td>
+            </tr>
+            <tr>
+                <th>Account ID</th>
+                <td th:text="${user.id}">0</td>
+            </tr>
+        </table>
+
+        <br>
+        <a th:href="@{/}">Back to Home</a> | 
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+
+    <div th:unless="${user != null}">
+        <p>Error: You must be logged in to view this page.</p>
+        <a th:href="@{/login}">Login here</a>
+    </div>
+</body>
+</html>

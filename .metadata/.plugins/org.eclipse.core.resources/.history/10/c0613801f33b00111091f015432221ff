@@ -1,0 +1,134 @@
+package in.main.controller;
+
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import in.main.repository.*;
+
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Controller
+@RequiredArgsConstructor
+public class MainController {
+
+    private final FeedbackRepository feedbackRepo;
+    private final AttendanceRepository attendanceRepo;
+    private final TodoTaskRepository todoRepo;
+    private final RestaurantOrderRepository orderRepo;
+    private final ContactRepository contactRepo;
+    private final LeaveRequestRepository leaveRepo;
+
+    @GetMapping("/")
+    public String dashboard() {
+        return "index"; // the HTML at the top of this response
+    }
+
+    // ====================== TASK 1: FEEDBACK ======================
+    @GetMapping("/feedback")
+    public String feedbackForm(Model model) {
+        model.addAttribute("feedback", new Feedback());
+        model.addAttribute("feedbackList", feedbackRepo.findAll());
+        return "feedback";
+    }
+
+    @PostMapping("/feedback/submit")
+    public String submitFeedback(@ModelAttribute Feedback feedback) {
+        feedbackRepo.save(feedback);
+        return "redirect:/feedback";
+    }
+
+    // ====================== TASK 2: ATTENDANCE ======================
+    @GetMapping("/attendance")
+    public String attendance(@RequestParam(required = false) LocalDate filterDate, Model model) {
+        model.addAttribute("attendance", new Attendance());
+        List<Attendance> list = (filterDate != null) ?
+                attendanceRepo.findByDate(filterDate) : attendanceRepo.findAll();
+        model.addAttribute("attendanceList", list);
+        model.addAttribute("filterDate", filterDate);
+        return "attendance";
+    }
+
+    @PostMapping("/attendance/submit")
+    public String submitAttendance(@ModelAttribute Attendance attendance) {
+        attendanceRepo.save(attendance);
+        return "redirect:/attendance";
+    }
+
+    // ====================== TASK 3: TO-DO ======================
+    @GetMapping("/todo")
+    public String todo(Model model) {
+        List<TodoTask> all = todoRepo.findAll();
+        model.addAttribute("todoTask", new TodoTask());
+        model.addAttribute("pending", all.stream().filter(t -> !t.isCompleted()).toList());
+        model.addAttribute("completed", all.stream().filter(TodoTask::isCompleted).toList());
+        return "todo";
+    }
+
+    @PostMapping("/todo/add")
+    public String addTodo(@ModelAttribute TodoTask task) {
+        todoRepo.save(task);
+        return "redirect:/todo";
+    }
+
+    @PostMapping("/todo/complete/{id}")
+    public String completeTodo(@PathVariable Long id) {
+        TodoTask task = todoRepo.findById(id).orElseThrow();
+        task.setCompleted(true);
+        todoRepo.save(task);
+        return "redirect:/todo";
+    }
+
+    // ====================== TASK 4: RESTAURANT ORDERS ======================
+    @GetMapping("/orders")
+    public String orders(Model model) {
+        List<RestaurantOrder> orders = orderRepo.findAll();
+        int totalItems = orders.stream().mapToInt(RestaurantOrder::getQuantity).sum();
+        model.addAttribute("order", new RestaurantOrder());
+        model.addAttribute("orderList", orders);
+        model.addAttribute("totalItems", totalItems);
+        return "orders";
+    }
+
+    @PostMapping("/orders/add")
+    public String addOrder(@ModelAttribute RestaurantOrder order) {
+        orderRepo.save(order);
+        return "redirect:/orders";
+    }
+
+    // ====================== TASK 5: CONTACT BOOK ======================
+    @GetMapping("/contacts")
+    public String contacts(@RequestParam(required = false) String search, Model model) {
+        List<Contact> list = (search != null && !search.trim().isEmpty()) ?
+                contactRepo.findByNameContainingIgnoreCase(search.trim()) : contactRepo.findAll();
+        model.addAttribute("contact", new Contact());
+        model.addAttribute("contactList", list);
+        model.addAttribute("search", search);
+        return "contact";
+    }
+
+    @PostMapping("/contacts/add")
+    public String addContact(@ModelAttribute Contact contact) {
+        contactRepo.save(contact);
+        return "redirect:/contacts";
+    }
+
+    // ====================== TASK 6: LEAVE REQUEST ======================
+    @GetMapping("/leaves")
+    public String leaves(Model model) {
+        model.addAttribute("leaveRequest", new LeaveRequest());
+        model.addAttribute("leaveList", leaveRepo.findAll());
+        return "leave";
+    }
+
+    @PostMapping("/leaves/submit")
+    public String submitLeave(@ModelAttribute LeaveRequest leave) {
+        leaveRepo.save(leave);
+        return "redirect:/leaves";
+    }
+}

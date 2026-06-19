@@ -1,0 +1,128 @@
+package com.restaurant.entity;
+
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "products")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false)
+    private String name;
+    
+    @Column(length = 1000)
+    private String description;
+    
+    private Double price;
+    
+    @Column(name = "image_url")
+    private String imageUrl;
+    
+    private Double rating;
+    
+    @Column(name = "category")
+    private String category;
+    
+    @Column(name = "preparation_time")
+    private Integer preparationTime; // in minutes
+    
+    @Column(name = "is_vegetarian")
+    private Boolean isVegetarian = true;
+    
+    @Column(name = "stock_quantity")
+    private Integer stockQuantity; // Default stock of 10
+    
+    // One-to-many relationship with Feedback
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Feedback> feedbacks = new ArrayList<>();
+    
+    // Transient fields - these won't be stored in database
+    @Transient
+    private Double averageRating;
+    
+    @Transient
+    private Long feedbackCount;
+    
+    // Constructors
+    public Product() {}
+    
+    public Product(String name, String description, Double price, String imageUrl, 
+                   Double rating, String category, Integer preparationTime, Boolean isVegetarian) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.rating = rating;
+        this.category = category;
+        this.preparationTime = preparationTime;
+        this.isVegetarian = isVegetarian;
+        this.stockQuantity = stockQuantity; // Default stock
+    }
+    
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    
+    public Double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
+    
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    
+    public Double getRating() { return rating; }
+    public void setRating(Double rating) { this.rating = rating; }
+    
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
+    
+    public Integer getPreparationTime() { return preparationTime; }
+    public void setPreparationTime(Integer preparationTime) { this.preparationTime = preparationTime; }
+    
+    public Boolean getIsVegetarian() { return isVegetarian; }
+    public void setIsVegetarian(Boolean isVegetarian) { this.isVegetarian = isVegetarian; }
+    
+    public Integer getStockQuantity() { return stockQuantity; }
+    public void setStockQuantity(Integer stockQuantity) { this.stockQuantity = stockQuantity; }
+    
+    public List<Feedback> getFeedbacks() { return feedbacks; }
+    public void setFeedbacks(List<Feedback> feedbacks) { this.feedbacks = feedbacks; }
+    
+    public Double getAverageRating() { return averageRating; }
+    public void setAverageRating(Double averageRating) { this.averageRating = averageRating; }
+    
+    public Long getFeedbackCount() { return feedbackCount; }
+    public void setFeedbackCount(Long feedbackCount) { this.feedbackCount = feedbackCount; }
+    
+    // Helper methods
+    public void addFeedback(Feedback feedback) {
+        feedbacks.add(feedback);
+        feedback.setProduct(this);
+    }
+    
+    public void removeFeedback(Feedback feedback) {
+        feedbacks.remove(feedback);
+        feedback.setProduct(null);
+    }
+    
+    // Check if in stock
+    public boolean isInStock() {
+        return stockQuantity != null && stockQuantity > 0;
+    }
+    
+    // Reduce stock
+    public void reduceStock(int quantity) {
+        if (stockQuantity >= quantity) {
+            stockQuantity -= quantity;
+        }
+    }
+}

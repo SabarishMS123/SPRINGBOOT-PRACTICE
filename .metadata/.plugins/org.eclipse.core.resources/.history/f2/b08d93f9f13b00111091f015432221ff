@@ -1,0 +1,5 @@
+package in.main.repository;
+
+public interface AttendanceRepository {
+
+}

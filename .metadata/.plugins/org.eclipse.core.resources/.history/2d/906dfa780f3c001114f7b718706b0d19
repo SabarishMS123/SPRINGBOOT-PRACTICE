@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Spice Garden</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+        
+        button:hover {
+            background: #764ba2;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .register-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+            border-left: 4px solid #c62828;
+        }
+        
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+            border-left: 4px solid #2e7d32;
+        }
+        
+        .info-message {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .demo-credentials {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .demo-credentials p {
+            margin: 5px 0;
+            color: #666;
+        }
+        
+        .demo-credentials strong {
+            color: #667eea;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome Back! 🍽️</h2>
+        <div class="subtitle">Login to Spice Garden</div>
+        
+        <!-- Display error message if login fails -->
+        <div th:if="${param.error}" class="error">
+            Invalid username or password. Please try again.
+        </div>
+        
+        <!-- Display success message after logout or registration -->
+        <div th:if="${param.logout}" class="success">
+            You have been logged out successfully.
+        </div>
+        
+        <div th:if="${success}" class="success" th:text="${success}"></div>
+        <div th:if="${error}" class="error" th:text="${error}"></div>
+        
+        <!-- Login Form - Important: action="/login" and method="post" -->
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required autofocus>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit">Login</button>
+        </form>
+        
+        <div class="register-link">
+            Don't have an account? <a href="/register">Register here</a>
+        </div>
+        
+        <!-- Demo credentials (remove in production) -->
+        <div class="demo-credentials">
+            <p><strong>📝 Demo Credentials:</strong></p>
+            <p>Username: <strong>john_doe</strong> (or the username you registered)</p>
+            <p>Password: <strong>your_registered_password</strong></p>
+            <p style="font-size: 0.8rem; margin-top: 5px;">⚠️ First register an account, then login!</p>
+        </div>
+    </div>
+    
+    <!-- Optional: Add JavaScript to remove demo credentials on click -->
+    <script>
+        // This is optional - removes demo credentials when user starts typing
+        document.addEventListener('DOMContentLoaded', function() {
+            const usernameInput = document.getElementById('username');
+            const demoBox = document.querySelector('.demo-credentials');
+            
+            if (usernameInput && demoBox) {
+                usernameInput.addEventListener('focus', function() {
+                    setTimeout(function() {
+                        demoBox.style.opacity = '0.5';
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

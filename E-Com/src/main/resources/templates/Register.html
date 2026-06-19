@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org>
+<head>
+	<meta charset="UTF-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Register Page </title>
+</head>
+<body th:replace="~{Base :: layout(~{::section})}">
+	
+	<section>
+    		<h1> This is Register Page </h1>
+			
+			<div class="container mt-1 ms-5 p-3">
+			  <div class="row">
+
+			    <!-- Left Image -->
+			    <div class="col-md-6 ">
+			      <img src="Img/E-com Img1.webp" width="100%" height="450px" alt="">
+			    </div>
+
+			    <!-- Register Card -->
+			    <div class="col-md-6 ">
+			      <div class="card shadow-lg">
+
+			        <div class="card-header text-center">
+			          <p class="fs-4 m-0">Register</p>
+			        </div>
+
+			        <div class="card-body card-sh">
+
+			          <div class="row">
+
+			            <div class="col-md-6 mb-3">
+			              <label><i class="fa-solid fa-user"></i></i>Full Name</label>
+			              <input type="text" class="form-control">
+			            </div>
+
+			            <div class="col-md-6 mb-3">
+			              <label><i class="fa-solid fa-phone"></i>Mobile Number</label>
+			              <input type="text" class="form-control">
+			            </div>
+						
+						<div class="col-md-6 mb-3">
+						  <label class="form-label">DOB</label>
+						  <input type="date" class="form-control">
+						</div>
+						
+						  <div class="col-md-6 mb-3">
+						    <label class="form-label">Gender</label>
+						    <select class="form-control">
+						      <!--<option>Select Gender</option>-->
+						      <option>Male</option>
+						      <option>Female</option>
+						      <option>Other</option>
+						    </select>
+						  </div>
+						  
+			            <div class="col-md-12 mb-3">
+			              <label><i class="fa-solid fa-envelope"></i>Email</label>
+			              <input type="email" class="form-control">
+			            </div>
+
+			            <div class="col-md-6 mb-3">
+			              <label>Address</label>
+			              <input type="text" class="form-control">
+			            </div>
+
+			            <div class="col-md-6 mb-3">
+			              <label>City</label>
+			              <input type="text" class="form-control">
+			            </div>
+
+			            <div class="col-md-6 mb-3">
+			              <label>State</label>
+			              <input type="text" class="form-control">
+			            </div>
+
+			            <div class="col-md-6 mb-3">
+			              <label>Pincode</label>
+			              <input type="text" class="form-control">
+			            </div>
+
+			            <div class="col-md-6 mb-3">
+			              <label><i class="fa-solid fa-lock"></i>Password</label>
+			              <input type="password" class="form-control">
+			            </div>
+
+			            <div class="col-md-6 mb-3">
+			              <label>Confirm Password</label>
+			              <input type="password" class="form-control">
+			            </div>
+						
+
+			            <div class="col-md-12 mb-3">
+			              <label><i class="fa-solid fa-cloud-arrow-up"></i>Profile Image</label>
+			              <input type="file" class="form-control">
+			            </div>
+						
+						<div class="col-md-12 mb-2">
+						  <label class="form-label"><i class="fa-solid fa-cloud-arrow-up"></i>Add Your Signature</label>
+						  <input type="file" class="form-control" accept=".jpg,.png,.pdf">
+						  <small class="text-muted">Only JPG, PNG, or PDF files are allowed</small>
+						</div>
+
+			            <div class="col-md-12">
+			              <button class="btn btn-primary w-100">Register</button>
+			            </div>
+
+			          </div>
+					<div class="card-footer text center ">
+						have an account ?<a href="/Login" 
+						class="text-decoration-none"> LOGIN </a>
+
+					</div>
+			        </div>
+
+			      </div>
+			    </div>
+
+			  </div>
+			</div>
+	</section>
+	
+</body>
+</html>

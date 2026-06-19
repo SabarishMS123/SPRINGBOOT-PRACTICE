@@ -1,0 +1,55 @@
+package in.config.resources;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import in.main.Trees;
+//
+//@Configuration
+//public class ApplicationConfiguration {
+//
+//    // Spring sees the 'Trees' parameter and looks for a bean that matches
+//    @Bean
+//    public CommandLineRunner cmdLineRunner(Trees trees1) {
+//        return args -> {
+//            trees1.displayTrees();
+//        };
+//    }
+//
+//    // You MUST define the bean here so it can be injected above
+//    @Bean
+//    public Trees trees1() {
+//        return new Trees("Azadirachta indica", "Neem Tree", 1234);
+//    }
+//}
+
+@Configuration
+public class ApplicationConfiguration{
+	
+	@Bean
+	public CommandLineRunner cmdLinerunner() {
+		return new CommandLineRunner() {
+
+			@Override
+			public void run(String... args) throws Exception {
+				// TODO Auto-generated method stub
+				
+				trees().displayTrees();
+				
+			}
+			
+		
+	};
+	}
+	
+	@Bean
+	public Trees trees()
+	{
+		return new Trees("Azadirachta indica", "Neem Tree", 1234);
+	}
+	@Bean
+	public Trees t1() {
+		return new Trees("Lemonda Inda","Lemon plant", 12345);
+	}
+	
+}

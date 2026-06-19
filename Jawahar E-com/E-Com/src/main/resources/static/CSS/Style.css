@@ -1,0 +1,49 @@
+@charset "ISO-8859-1";
+
+/* Existing styles */
+.card-sh {
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+.cat-div {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* NEW: Product card animation */
+.product-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+/* Hover effect */
+.product-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+}
+
+/* Image animation */
+.product-img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Zoom image */
+.product-card:hover .product-img {
+    transform: scale(1.1);
+}
+
+/* Text animation */
+.product-card p {
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+/* Text hover color */
+.product-card:hover p {
+    color: #0d6efd; /* Bootstrap primary */
+}

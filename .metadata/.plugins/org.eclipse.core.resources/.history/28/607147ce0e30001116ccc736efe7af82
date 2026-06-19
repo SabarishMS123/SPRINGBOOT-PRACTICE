@@ -1,0 +1,62 @@
+package in.main;
+
+import java.util.List;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import in.main.entity.Student;
+import in.main.service.StudentService;
+
+@SpringBootApplication
+public class JpaConsoleCrudApplication {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext context = SpringApplication.run(JpaConsoleCrudApplication.class, args);
+		StudentService service = context.getBean(StudentService.class);
+		
+		//===== insert student ===
+//		Student std = new Student();
+//		std.setName("Saboo");
+//		std.setRoll_no(45);
+//		std.setMarks(99.0f);
+//		
+//		boolean status = service.addStudentDetails(std);
+//		if(status) {
+//			System.out.println("Student data inserted successfully");
+//		}
+//		else {
+//			System.out.println("Student data cannot be inserted");
+//		}
+		
+//		// ====  select operation ===
+//		List<Student> stdList=service.getAllStdDetails();
+//		for(Student std : stdList) {
+//			System.out.println("ID"+std.getId());
+//			System.out.println("Name:"+std.getName());
+//			System.out.println("Roll No :"+ std.getRoll_no());
+//			System.out.println("Marks:"+std.getMarks());
+//		}
+//		
+//		// === Update operation ===
+		boolean status = service.updateStdDetails(1L,98.59f);
+		if(status) {
+			System.out.println("Student details  updated due to error!");
+		}
+		else {
+			System.out.println("Student details not updated due to error !");
+		}
+//		
+//		//=== delete operation ===
+		boolean status = service.deleteStdDetails(1L);
+		if(status) {
+			System.out.println("STUDENT DELETED SUCCESSFULLY ....");
+		}
+		else {
+			System.out.println("STudent dtails delted due to error...");
+		}
+	}
+
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+
+<body th:replace="~{Base :: layout(~{::section})}">
+	
+	<section>
+	    <h1>This is Login Page 2 </h1>
+		
+		<div class="container mt-2 p-5 ">
+		  <div class="row">
+
+		    <div class="col-md-6">
+		      <img src="Img/E-com Img1.webp" width="100%" height="400px" alt="">
+		    </div>
+				
+		    <div class="col-md-6 ">
+		      <div class="card p-4 shadow-lg bg-tertiary rounded">
+		        <div class="card-header">
+		          <p class="fs-4 text-center mt-[-1]">Login</p>
+		        </div>
+
+		        <div class="card-body">
+		          <div class="mb-3">
+		            <label>Email</label>
+		            <input name="email" type="email" class="form-control">
+		          </div>
+
+		          <div class="mb-3">
+		            <label>Password</label>
+		            <input name="password" type="password" class="form-control">
+		          </div>
+
+		          <button class="btn btn-primary w-100 ">Login</button>
+		        </div>
+				<div class="card-footer text-center" > 
+					<a href="#" class="text-decoration-none"> Forget password </a> <br> 
+					Don't have an account ?<br>
+					<a href="#" class="text-decoration-none"> Create New Account & password </a>
+				 </div>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+	</section>
+		
+
+</body>
+</html>

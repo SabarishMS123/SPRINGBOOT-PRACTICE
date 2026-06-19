@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;EmployeeRepository.java&apos; to &apos;TransactionManagement-1/src/main/java/in.main&apos;&#x0D;&#x0A;- Original project: &apos;TransactionManagement&apos;&#x0D;&#x0A;- Destination element: &apos;TransactionManagement-1/src/main/java/in.main&apos;&#x0D;&#x0A;- Original element: &apos;in.main.EmployeeRepository.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=TransactionManagement-1/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;in.main" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;in.main{EmployeeRepository.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1774163903742" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index Page</title>
+</head>
+
+<body th:replace="~{Base :: layout(~{::section})}">
+<section>
+    <h1>hello</h1>
+
+    <!-- Start Slider Here -->
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="2000">
+                <img src="Img/E-com Img1.webp" class="d-block w-100" height="550px" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="Img/Product_img/200 (9).webp" class="d-block w-100" height="550px" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="Img/200 (15).webp" class="d-block w-100" height="550px" alt="...">
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    <!-- End Slider Here -->
+
+
+    <!-- Category Start -->
+    <div class="container-fluid bg-light p-3">
+        <p class="text-center fs-4">Category</p>
+
+        <div class="row row-cols-md-5 g-3">
+			<!-- g-gap3-->
+
+            <div class="col">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <img src="Img/giphy (1).webp" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Category Second Row -->
+    <div class="container-fluid bg-light p-3">
+        <p class="text-center fs-4">Category</p>
+
+        <div class="row row-cols-2 row-cols-md-5 g-3">
+
+            <div class="col">
+                <div class="card product-card text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" class="img-fluid product-img" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card product-card text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" class="img-fluid product-img" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card product-card text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" class="img-fluid product-img" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card product-card text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" class="img-fluid product-img" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card product-card text-center">
+                    <div class="card-body">
+                        <img src="Img/200 (15).webp" class="img-fluid product-img" width="100%" height="100px">
+                        <p class="mt-2">Sound-Bar</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Category End -->
+
+
+    <!-- Start Latest Product -->
+    <div class="container-fluid bg-light p-3">
+        <p class="text-center fs-4">Latest Product</p>
+
+        <div class="row g-3">
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="Img/Product_img/200 (9).webp" width="65%" height="140px">
+                        <p class="p-2">Watch</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="Img/Product_img/200 (9).webp" width="65%" height="140px">
+                        <p class="p-2">Watch</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="Img/Product_img/200 (9).webp" width="65%" height="140px">
+                        <p class="p-2">Watch</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="Img/Product_img/200 (9).webp" width="65%" height="140px">
+                        <p class="p-2">Watch</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Latest Product -->
+
+	<div class="container-fluid py-4">
+
+	    <!-- ===== Row 1 ===== -->
+	    <div class="row g-3">
+
+	        <div class="col-12 col-md-4">
+	           
+	                <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg" muted loop>
+	                    <source src="https://assets.awwwards.com/awards/external/2017/10/59d4f5e99fce6.mp4" type="video/mp4">
+	                </video>
+	           
+	        </div>
+
+	        <div class="col-12 col-md-4">
+	            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg" muted loop>
+	                <source src="https://assets.awwwards.com/awards/element/2023/12/6579c7fce14e3914317455.mp4" type="video/mp4">
+	            </video>
+	        </div>
+
+	        <div class="col-12 col-md-4">
+	            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg" muted loop>
+	                <source src="https://assets.awwwards.com/awards/element/2024/10/670691bc99451061952297.mp4" type="video/mp4">
+	            </video>
+	        </div>
+
+	    </div>
+
+	    <!-- ===== Row 2 ===== -->
+	    <div class="row g-3 mt-1">
+
+	        <div class="col-12 col-md-4">
+	            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg" muted loop>
+	                <source src="https://assets.awwwards.com/awards/element/2024/10/671236840dbdd065920860.mp4" type="video/mp4">
+	            </video>
+	        </div>
+
+	        <div class="col-12 col-md-4">
+	            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg" muted loop>
+	                <source src="https://assets.awwwards.com/awards/external/2017/04/catalog-dot-navigation-scroll.mp4" type="video/mp4">
+	            </video>
+	        </div>
+
+	        <div class="col-12 col-md-4">
+	            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg" muted loop>
+	                <source src="https://assets.awwwards.com/awards/external/2017/02/58a2fbe03cb3a.mp4" type="video/mp4">
+	            </video>
+	        </div>
+
+	    </div>
+
+		<div class="container-fluid py-4">
+
+		    <!-- ===== Row 1 ===== -->
+		    <div class="row g-3">
+
+		        <div class="col-12 col-md-4">
+		           
+		                <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                       autoplay loop muted playsinline preload="auto">
+		                    <source src="https://assets.awwwards.com/awards/external/2017/10/59d4f5e99fce6.mp4" type="video/mp4">
+		                </video>
+		            
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/element/2023/12/6579c7fce14e3914317455.mp4" type="video/mp4">
+		            </video>
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/element/2024/10/670691bc99451061952297.mp4" type="video/mp4">
+		            </video>
+		        </div>
+
+		    </div>
+
+		    <!-- ===== Row 2 ===== -->
+		    <div class="row g-3 mt-1">
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/element/2024/10/671236840dbdd065920860.mp4">
+		            </video>
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/external/2017/04/catalog-dot-navigation-scroll.mp4">
+		            </video>
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/external/2017/02/58a2fbe03cb3a.mp4">
+		            </video>
+		        </div>
+
+		    </div>
+
+		    <!-- ===== Image Row ===== -->
+		    <div class="row g-3 mt-1">
+
+		        <div class="col-12 col-md-4">
+		            <img src="https://assets.awwwards.com/awards/media/cache/thumb_880_660/submissions/2023/07/64aec4dc42b20000830608.jpg"
+		                 class="w-100 h-[250px] object-cover rounded-4 shadow-lg img-fluid">
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <img src="https://assets.awwwards.com/awards/media/cache/thumb_880_660/submissions/2023/07/64ad11556fdd1382128603.jpg"
+		                 class="w-100 h-[250px] object-cover rounded-4 shadow-lg img-fluid">
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <img src="https://assets.awwwards.com/awards/media/cache/thumb_880_660/external/2021/10/6172b4536878b402942277.jpg"
+		                 class="w-100 h-[250px] object-cover rounded-4 shadow-lg img-fluid">
+		        </div>
+
+		    </div>
+
+		    <!-- ===== Row 3 ===== -->
+		    <div class="row g-3 mt-1">
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/external/2020/10/5f88358da6514142420506.mp4">
+		            </video>
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/external/2019/02/5c563b09d68fc218928815.mp4">
+		            </video>
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/element/2024/06/666f3bd899c30308027177.mp4">
+		            </video>
+		        </div>
+
+		    </div>
+
+		    <!-- ===== Row 4 ===== -->
+		    <div class="row g-3 mt-1">
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/element/2023/08/64e88042ded60298969203.mp4">
+		            </video>
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/element/2022/06/62ac564e74b01740653875.mp4">
+		            </video>
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <video class="video-gallery w-100 h-[250px] object-cover rounded-4 shadow-lg"
+		                   autoplay loop muted playsinline preload="auto">
+		                <source src="https://assets.awwwards.com/awards/external/2021/04/608ac0d4210ab583565276.mp4">
+		            </video>
+		        </div>
+
+		    </div>
+
+		    <!-- ===== Final Image Row ===== -->
+		    <div class="row g-3 mt-1">
+
+		        <div class="col-12 col-md-4">
+		            <img src="https://assets.awwwards.com/awards/media/cache/thumb_880_660/external/2021/11/6193a55b608ab317119036.jpg"
+		                 class="w-100 h-[250px] object-cover rounded-4 shadow-lg img-fluid">
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <img src="https://assets.awwwards.com/awards/media/cache/thumb_880_660/element/2024/11/6737367d714ef791459034.jpg"
+		                 class="w-100 h-[250px] object-cover rounded-4 shadow-lg img-fluid">
+		        </div>
+
+		        <div class="col-12 col-md-4">
+		            <img src="https://assets.awwwards.com/awards/media/cache/thumb_880_660/element/2025/01/6777f00e5be0a750065875.png"
+		                 class="w-100 h-[250px] object-cover rounded-4 shadow-lg img-fluid">
+		        </div>
+
+		    </div>
+
+		</div>
+
+		<!-- ===== FIXED JS ===== -->
+		<script>
+		const videos = document.querySelectorAll('.video-gallery');
+
+		videos.forEach(video => {
+		  video.muted = true;
+		  video.loop = true;
+
+		  video.addEventListener('canplay', () => {
+		    video.play().catch(() => {});
+		  });
+		});
+		</script>
+	  
+	  
+
+</section>
+</body>
+</html>

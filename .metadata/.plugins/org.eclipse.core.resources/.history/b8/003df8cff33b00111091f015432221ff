@@ -1,0 +1,103 @@
+package in.main.service;
+
+
+
+import in.main.entity.*;
+import in.main.repository.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class MainService {
+
+    private final FeedbackRepository feedbackRepository;
+    private final AttendanceRepository attendanceRepository;
+    private final TodoTaskRepository todoTaskRepository;
+    private final RestaurantOrderRepository restaurantOrderRepository;
+    private final ContactRepository contactRepository;
+    private final LeaveRequestRepository leaveRequestRepository;
+
+    // Feedback
+    public Feedback saveFeedback(Feedback feedback) {
+        return feedbackRepository.save(feedback);
+    }
+
+    public List<Feedback> getAllFeedback() {
+        return feedbackRepository.findAll();
+    }
+
+    // Attendance
+    public Attendance saveAttendance(Attendance attendance) {
+        return attendanceRepository.save(attendance);
+    }
+
+    public List<Attendance> getAllAttendance() {
+        return attendanceRepository.findAll();
+    }
+
+    public List<Attendance> getAttendanceByDate(LocalDate date) {
+        return attendanceRepository.findByDate(date);
+    }
+
+    // To-Do
+    public TodoTask saveTodoTask(TodoTask task) {
+        return todoTaskRepository.save(task);
+    }
+
+    public List<TodoTask> getAllTodoTasks() {
+        return todoTaskRepository.findAll();
+    }
+
+    public void markTodoAsCompleted(Long id) {
+        TodoTask task = todoTaskRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Task not found with id: " + id));
+        task.setCompleted(true);
+        todoTaskRepository.save(task);
+    }
+
+    // Restaurant Orders
+    public RestaurantOrder saveOrder(RestaurantOrder order) {
+        return restaurantOrderRepository.save(order);
+    }
+
+    public List<RestaurantOrder> getAllOrders() {
+        return restaurantOrderRepository.findAll();
+    }
+
+    public int getTotalItemsOrdered() {
+        return restaurantOrderRepository.findAll().stream()
+                .mapToInt(RestaurantOrder::getQuantity)
+                .sum();
+    }
+
+    // Contacts
+    public Contact saveContact(Contact contact) {
+        return contactRepository.save(contact);
+    }
+
+    public List<Contact> getAllContacts() {
+        return contactRepository.findAll();
+    }
+
+    public List<Contact> searchContactsByName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            return getAllContacts();
+        }
+        return contactRepository.findByNameContainingIgnoreCase(name.trim());
+    }
+
+    // Leave Requests
+    public LeaveRequest saveLeaveRequest(LeaveRequest leaveRequest) {
+        return leaveRequestRepository.save(leaveRequest);
+    }
+
+    public List<LeaveRequest> getAllLeaveRequests() {
+        return leaveRequestRepository.findAll();
+    }
+}

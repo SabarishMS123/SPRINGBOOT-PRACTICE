@@ -1,0 +1,110 @@
+package com.demo.main.dao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.demo.main.dao.UserDao.UserRowMapper;
+import com.demo.main.entity.User;
+
+
+@Repository
+public class UserDao {
+   
+	 @Autowired
+	 private JdbcTemplate jdbcTemplate;
+	
+	 public boolean insertUser(User user) {
+		 boolean status=false;
+			try {
+				String insertsqlquery="insert into user(id,name,email,address) values (?,?,?,?)";
+				System.out.println("Name-->"+user.getName());
+				int count= jdbcTemplate.update(insertsqlquery ,user.getId(),user.getName(),user.getEmail(),user.getAddress());
+				if (count>0)
+				{
+					status=true;
+				}
+				else {
+					status=false;
+				}
+				
+			}
+			catch(Exception e)
+			{
+				
+				status=false;
+				System.out.println(e);
+				e.printStackTrace();
+			}
+			
+			return status;
+	 }
+	 
+	 public boolean updateUser(User User) {
+		 boolean status = false;
+		    try {
+		        String updateSqlQuery = "UPDATE user SET name = ?, email = ?, address = ? WHERE id = ?";
+		        System.out.println("Updating user with ID: " + User.getId());
+		        int count = jdbcTemplate.update(updateSqlQuery, User.getName(), User.getEmail(), User.getAddress(), User.getId());
+
+		        if (count > 0) {
+		            status = true;
+		        } else {
+		            status = false;
+		        }
+		    } catch (Exception e) {
+		        status = false;
+		        System.out.println(e);
+		        e.printStackTrace();
+		    }
+		    return status;
+	 }
+	 
+	 public boolean deleteUser(int userid) {
+		 boolean status = false;
+		    try {
+		        String deleteSqlQuery = "DELETE FROM user WHERE id = ?";
+		        System.out.println("Deleting user with ID: " + userid);
+		        int count = jdbcTemplate.update(deleteSqlQuery, useid);
+
+		        if (count > 0) {
+		            status = true;
+		        } else {
+		            status = false;
+		        }
+		    } catch (Exception e) {
+		        status = false;
+		        System.out.println(e);
+		        e.printStackTrace();
+		    }
+		    return status;
+	 }
+	 
+	 public static final class UserRowMapper implements RowMapper<User>{
+
+			@Override
+			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				
+				User user=new User();
+				user.setName(rs.getString("name"));
+				user.setEmail(rs.getString("email"));
+				user.setAddress(rs.getString("address"));
+				user.setId(rs.getInt("id"));
+				
+				System.out.println("User-->"+user.getName());
+				
+				return user;
+			}
+			
+		}
+	 public User getUserbyEmail(String email)
+	 {
+		 String selectquery="select *from user where email=?";
+		 return jdbcTemplate.queryForObject(selectsqlquery,new UserRowMapper(),email);
+	 }
+}
