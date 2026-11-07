@@ -1,4 +1,3 @@
-```markdown
 <div align="center">
 
 # ☕ Spring Boot & Enterprise Java Lab
@@ -20,18 +19,15 @@ A structured monorepo demonstrating end-to-end backend engineering concepts, ent
 
 ## 🧭 Repository Structure & Categorization
 
-This repository contains hands-on enterprise modules categorized by architectural layer and functional focus.
+This repository contains hands-on enterprise modules categorized by architectural layer and functional focus:
 
-
-```
-
+```text
 SPRINGBOOT-PRACTICE/
 ├── 01-Core-Spring-Framework/      # IoC, DI, Bean Lifecycles, Scheduling
 ├── 02-Data-Persistence-JPA/       # JDBC, Hibernate, ORM Mappings, Pagination
 ├── 03-Security-Authentication/    # Spring Security, JWT, RBAC
 ├── 04-FullStack-Enterprise-Apps/  # E-Commerce, EMS, School Management Systems
 └── 05-DevOps-Deployment/          # Docker, Tomcat, WAR/JAR packaging
-
 ```
 
 ---
@@ -39,7 +35,8 @@ SPRINGBOOT-PRACTICE/
 ## 🛠️ Module Index
 
 <details open>
-<summary><h3>1. Core Spring & Enterprise Utilities</h3></summary>
+<summary><b>1. Core Spring & Enterprise Utilities</b></summary>
+<br/>
 
 | Module / Directory | Key Concepts | Technologies |
 |---|---|---|
@@ -54,7 +51,8 @@ SPRINGBOOT-PRACTICE/
 </details>
 
 <details>
-<summary><h3>2. Persistence, ORM & Database Architecture</h3></summary>
+<summary><b>2. Persistence, ORM & Database Architecture</b></summary>
+<br/>
 
 | Module / Directory | Key Concepts | Technologies |
 |---|---|---|
@@ -69,7 +67,8 @@ SPRINGBOOT-PRACTICE/
 </details>
 
 <details>
-<summary><h3>3. Security & Authentication Systems</h3></summary>
+<summary><b>3. Security & Authentication Systems</b></summary>
+<br/>
 
 | Module / Directory | Key Concepts | Technologies |
 |---|---|---|
@@ -80,7 +79,8 @@ SPRINGBOOT-PRACTICE/
 </details>
 
 <details>
-<summary><h3>4. Full-Stack & Industry Systems</h3></summary>
+<summary><b>4. Full-Stack & Industry Systems</b></summary>
+<br/>
 
 | Module / Directory | Key Concepts | Tech Stack |
 |---|---|---|
@@ -94,7 +94,8 @@ SPRINGBOOT-PRACTICE/
 </details>
 
 <details>
-<summary><h3>5. Containerization, DevOps & Packaging</h3></summary>
+<summary><b>5. Containerization, DevOps & Packaging</b></summary>
+<br/>
 
 | Module / Directory | Key Concepts | Execution |
 |---|---|---|
@@ -119,7 +120,7 @@ SPRINGBOOT-PRACTICE/
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/SabarishMS123/SPRINGBOOT-PRACTICE.git](https://github.com/SabarishMS123/SPRINGBOOT-PRACTICE.git)
+git clone https://github.com/SabarishMS123/SPRINGBOOT-PRACTICE.git
 
 # 2. Navigate to your desired project directory
 cd SPRINGBOOT-PRACTICE/CrudMysqlApplication
@@ -131,21 +132,16 @@ cd SPRINGBOOT-PRACTICE/CrudMysqlApplication
 
 # 4. Build and execute via Maven Wrapper
 ./mvnw clean spring-boot:run
-
 ```
-
-## 👨‍💻 Author
-
-**Sabarish M S**
-
-* Salem, Tamil Nadu, India
-* **GitHub:** [@SabarishMS123](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/SabarishMS123)
-* **Portfolio:** [sabarishdev.netlify.app](https://sabarishdev.netlify.app/)
 
 ---
 
+## 👨‍💻 Author
+
+**Sabarish M S**  
+* Salem, Tamil Nadu, India  
+* **GitHub:** [@SabarishMS123](https://github.com/SabarishMS123)  
+* **Portfolio:** [sabarishdev.netlify.app](https://sabarishdev.netlify.app/)
+
+---
 © All rights reserved.
-
-```
-
-```
